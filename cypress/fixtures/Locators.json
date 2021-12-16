@@ -14,7 +14,7 @@
         "LastName": "#last-name",
         "Email": "#email",
         "PasswordInput": "#password",
-        "PasswordConfirmatinInput": "#passwordConfirmatin",
+        "PasswordConfirmatinInput": "#password-confirmatin",
         "FormCheckbox": "input[type=checkbox]",
         "SubmitButton": "button[type='submit']"
     }    
