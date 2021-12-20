@@ -21,4 +21,4 @@ class AuthLogin {
         this.submitBtn.click();
     }
 }
-export const authLogin = new AuthLogin ();
+export const authLogin = new AuthLogin();

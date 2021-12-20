@@ -7,8 +7,16 @@ class Header {
         return cy.get("a[href='/register']");
     }
 
+    get createBtn() {
+        return cy.get("a[href='/create']");  
+    }
+
     get logoutBtn() {
         return cy.get(".nav-link").eq(3);
+    }
+
+     get subBtn () {
+        return cy.get ("button[type='submit'].eq(0)")
     }
 }
 

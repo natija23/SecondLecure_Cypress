@@ -1,7 +1,8 @@
 {
     "Header": {
         "LoginButton": "a[href='/login']",
-        "RegisterButton": "a[href='/register']"
+        "RegisterButton": "a[href='/register']",
+        "CreateButton": "a[href='/create']" 
     },
     "LoginPage": {
         "EmailInput": "#email",
@@ -17,5 +18,12 @@
         "PasswordConfirmatinInput": "#password-confirmatin",
         "FormCheckbox": "input[type=checkbox]",
         "SubmitButton": "button[type='submit']"
-    }    
+    },
+    "CreatePage": {
+        "titleInput": "input[id='title']",
+        "descriptionInput": "input[id='description']",
+        "imageInput": "input[placeholder='image url']",
+        "subBtn": "button[type='submit']"
+    }
+
 }
