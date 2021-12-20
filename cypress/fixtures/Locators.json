@@ -15,9 +15,9 @@
         "LastName": "#last-name",
         "Email": "#email",
         "PasswordInput": "#password",
-        "PasswordConfirmatinInput": "#password-confirmatin",
+        "PasswordConfirmationInput": "#password-confirmation",
         "FormCheckbox": "input[type=checkbox]",
-        "SubmitButton": "button[type='submit']"
+        "subBtn": "button[type='submit']"
     },
     "CreatePage": {
         "titleInput": "input[id='title']",

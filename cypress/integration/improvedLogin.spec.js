@@ -3,6 +3,7 @@
 
 const Locators = require ('../fixtures/Locators.json');
 const faker = require ("faker");
+const { authLogin } = require('../page_objects/authLogin');
 
 describe("login test", () => {
     let validEmail = "tcvijic1@gmail.com";
@@ -24,7 +25,7 @@ describe("login test", () => {
     xit("Login with invalid credentials", () => {
         cy.get(Locators.Header.LoginButton).click();
         cy.url().should('contains','/login');
-
+        
         cy.get(Locators.LoginPage.EmailInput).clear().type(userData.randomEmail);
         cy.get(Locators.LoginPage.PasswordInput).clear().type(userData.randomPassword);
         cy.get(Locators.LoginPage.SubmitButton).click();
