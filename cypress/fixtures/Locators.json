@@ -23,7 +23,7 @@
         "titleInput": "input[id='title']",
         "descriptionInput": "input[id='description']",
         "imageInput": "input[placeholder='image url']",
-        "subBtn": "button[type='submit']"
+        "subBtn": ".btn"
     }
 
 }

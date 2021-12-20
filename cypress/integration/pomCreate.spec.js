@@ -11,17 +11,14 @@ describe ("POM Create", () => {
 
     let userData = {
         
-        title:faker.lorem.words(80),
-        description: faker.lorem.sentence(50),
-        img:faker.image.imageUrl()   
+        title:faker.lorem.words(8),
+        description: faker.lorem.sentence(6),
+        img:faker.image.avatar()
     }
 
-    before ('visit app', () => {
+    beforeEach ('visit app and login', () => {
         cy.visit('/');
         cy.url().should("contains", "https://gallery-app.vivifyideas.com/");
-    });
-
-    it('login with valid credentials', () => {
         header.loginBtn.click();
         cy.url().should('contains','/login');
 
@@ -29,7 +26,16 @@ describe ("POM Create", () => {
         cy.wait (10000);
         cy.url().should('not.contains','/login');
     });
-    
+
+    //it('login with valid credentials', () => {
+    //    header.loginBtn.click();
+    //    cy.url().should('contains','/login');
+
+    //    authLogin.login(validEmail, validPass);
+    //    cy.wait (10000);
+    //    cy.url().should('not.contains','/login');
+    //});
+
     it('Create new Gallery', () => {
         header.createBtn.click();
         cy.url().should('contains','/create');

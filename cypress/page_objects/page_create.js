@@ -11,7 +11,7 @@ class PageCreate {
         return cy.get ("input[placeholder='image url']")
     }
     get subBtn () {
-        return cy.get ("button[type='submit']")
+        return cy.get (".btn").eq(0);
     }
 
     create (title, description, img) {

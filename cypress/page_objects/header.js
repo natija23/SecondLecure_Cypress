@@ -16,7 +16,7 @@ class Header {
     }
 
      get subBtn () {
-        return cy.get ("button[type='submit'].eq(0)")
+        return cy.get (".btn").eq(0);
     }
 }
 
