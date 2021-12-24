@@ -1,4 +1,8 @@
 {
-    "baseUrl" : "https://gallery-app.vivifyideas.com/"
-
+    "baseUrl" : "https://gallery-app.vivifyideas.com/",
+    "video": false,
+    "env": {
+        "validUserEmail": "tcvijic1@gmail.com",
+        "validUserPass": "testiranje22"
+    }
 }

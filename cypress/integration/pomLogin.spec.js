@@ -9,19 +9,19 @@ describe ("POM login", () => {
     let validEmail = "tcvijic1@gmail.com";
     let validPass = "testiranje22";
 
-    let userData = {
+    //let userData = {
         
-        randomEmail: faker.internet.email(),
-        randomPassword: faker.internet.password()
+    //    randomEmail: faker.internet.email(),
+    //    randomPassword: faker.internet.password()
 
-    }
+    //}
 
     before ('visit app', () => {
         cy.visit('/');
         cy.url().should("contains", 'gallery-app');
     });
 
-    it('login with invalid credentials', () => {
+    xit('login with invalid credentials', () => {
         header.loginBtn.click();
         authLogin.login(userData.randomEmail, userData.randomPassword);
         authLogin.loginPageHeading.should ('be.visible');
@@ -34,15 +34,25 @@ describe ("POM login", () => {
         cy.url().should('contains', '/login');
     });
 
-    it('login with valid credentials', () => {
+    it.only('login with valid credentials', () => {
+        cy.intercept({
+            method: 'POST',
+            url: 'https://gallery-api.vivifyideas.com/api/auth/login'
+        }).as('login');
+
         header.loginBtn.click();
         cy.url().should('contains', '/login');
 
-        authLogin.login(validEmail, validPass);
-        cy.wait (10000);
-        header.loginBtn.should('not.be.visible');
+        authLogin.login (validEmail, validPass);
+        cy.wait ('@login').then((interception) => {
+            console.log(interception.response);
+            expect(interception.response.statusCode).eq(200);
+        });
+        header.loginBtn.should('not.exist');
         cy.url().should('not.contains', '/login');
     });
+
+
 
     it('logout', () => {
         header.logoutBtn.click();

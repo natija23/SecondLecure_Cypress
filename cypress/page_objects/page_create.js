@@ -25,14 +25,17 @@ class PageCreate {
     get imageAddInput () {
         return cy.get ('input[placeholder="image url"]').eq(1);
     }
+    get comment () {
+        return cy.get ('textarea');
+    }
     get affterCreateHeading () {
         return cy.get ('h1[class="title-style"]');
     }
 
     create (title, description, img) {
-        this.titleInput.clear().type(title);
-        this.descriptionInput.clear().type(description);
-        this.imageInput.clear().type(img);
+        this.titleInput.type(title);
+        this.descriptionInput.type(description);
+        this.imageInput.type(img);
         this.subBtn.click();
 
     }

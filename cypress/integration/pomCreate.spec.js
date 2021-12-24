@@ -1,4 +1,4 @@
-<reference type ="cypress"/>
+
 
 import {authLogin} from '../page_objects/authLogin';
 import {pageCreate} from '../page_objects/page_create';
