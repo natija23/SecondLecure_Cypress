@@ -1,4 +1,5 @@
-/// < reference types="Cypress" />
+<reference type ="cypress"/>
+
 import {authLogin} from '../page_objects/authLogin';
 import {pageCreate} from '../page_objects/page_create';
 import {header} from '../page_objects/header';
@@ -23,27 +24,46 @@ describe ("POM Create", () => {
         cy.url().should('contains','/login');
 
         authLogin.login(validEmail, validPass);
-        cy.wait (10000);
+        cy.wait (5000);
         cy.url().should('not.contains','/login');
     });
-
-    //it('login with valid credentials', () => {
-    //    header.loginBtn.click();
-    //    cy.url().should('contains','/login');
-
-    //    authLogin.login(validEmail, validPass);
-    //    cy.wait (10000);
-    //    cy.url().should('not.contains','/login');
-    //});
-
+    
     it('Create new Gallery', () => {
         header.createBtn.click();
         cy.url().should('contains','/create');
 
         pageCreate.create (userData.title, userData.description, userData.img)
         
-        header.subBtn.click();
-        cy.url().should('not.contains','/create');
+    });
+
+    it('Create new Gallery with Two Images ', () => {
+        header.createBtn.click();
+        cy.url().should('contains','/create');
+
+        pageCreate.createTwoImg(userData.title, userData.description, userData.img)
+        
+        header.logoutBtn.should ("be.visible");
+        pageCreate.affterCreateHeading.should ('have.value', '');
+        
+    });
+    it('Create but Cancel New Gallery ', () => {
+        header.createBtn.click();
+        cy.url().should('contains','/create');
+
+        pageCreate.cancelCreating(userData.title, userData.description, userData.img)
+        cy.url().should('contains', 'gallery-app');        
+    });
+
+    it('Create without Title', () => {
+        header.createBtn.click();
+        cy.url().should('contains','/create');
+
+        pageCreate.createNoTitle('{selectall}{backspace}', userData.description, userData.img);
+        
+        pageCreate.titleInput.should ('have.value', '');
+        header.logoutBtn.should ("be.visible");
+        pageCreate.affterCreateHeading.should ('have.value', '');
+
     });
 
 });

@@ -1,40 +1,56 @@
 class AuthRegister {
 
-    get FirstName () {
+    get firstName () {
         return cy.get ("#first-name");
     }
 
-    get LastName () {
+    get lastName () {
         return cy.get ("#last-name");
     }
 
-    get Email () {
+    get email () {
         return cy.get ("#email");
     }
 
-    get Password () {
+    get password () {
         return cy.get ("#password");
     }
 
-    get NewPassword () {
+    get newPassword () {
         return cy.get ("#password-confirmation");
     }
-    get FormCheckbox () {
+
+    get formCheckbox () {
         return cy.get ("input[type=checkbox]");
     }
-    get subBtn () {
+
+    get subbBtn () {
         return cy.get ("button[type='submit']");
     }
-
-    register (FirstName, LastName, Email, Password, NewPassword) {
-        this.FirstName.clear().type(FirstName);
-        this.LastName.clear().type(LastName);
-        this.Email.clear().type(Email);
-        this.Password.clear().type(Password);
-        this.NewPassword.clear().type(NewPassword);
-        this.FormCheckbox.check();
-        this.subBtn.click();
+    
+    get errorAlert () {
+        return cy.get ('.alert');
     }
+
+    register (firstName, lastName, email, password, newPassword) {
+        this.firstName.clear().type(firstName);
+        this.lastName.clear().type(lastName);
+        this.email.clear().type(email);
+        this.password.clear().type(password);
+        this.newPassword.clear().type(newPassword);
+        this.formCheckbox.check();
+        this.subbBtn.click();
+    }
+
+    checkbox (firstName, lastName, email, password, newPassword) {
+        this.firstName.clear().type(firstName);
+        this.lastName.clear().type(lastName);
+        this.email.clear().type(email);
+        this.password.clear().type(password);
+        this.newPassword.clear().type(newPassword);
+        this.subbBtn.click();
+    }
+
 }
 
 export const authRegister = new AuthRegister ();
