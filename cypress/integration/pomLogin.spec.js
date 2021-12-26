@@ -1,7 +1,7 @@
 /// < reference types="Cypress" />
 
-import {authLogin} from '../page_objects/authLogin';
-import {header} from '../page_objects/header';
+import { authLogin } from '../page_objects/authLogin';
+import { header } from '../page_objects/header';
 
 const faker = require ("faker");
 
@@ -25,7 +25,6 @@ describe ("POM login", () => {
         header.loginBtn.click();
         authLogin.login(userData.randomEmail, userData.randomPassword);
         authLogin.loginPageHeading.should ('be.visible');
-        //authLogin.loginPageHeading.should ('contains', 'Please login');
 
         authLogin.errorMsg.should('be.visible');
         authLogin.errorMsg.should('have.text', 'Bad Credentials');

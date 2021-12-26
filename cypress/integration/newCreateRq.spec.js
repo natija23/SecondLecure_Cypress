@@ -1,9 +1,9 @@
-import {authLogin} from '../page_objects/authLogin';
-import {pageCreate} from '../page_objects/page_create';
-import {header} from '../page_objects/header';
+import { authLogin } from '../page_objects/authLogin';
+import { pageCreate } from '../page_objects/page_create';
+import { header } from '../page_objects/header';
 
 
-const faker = require ("faker");
+const faker = require("faker");
 
 describe("POM Create", () => {
     let galleryId = "";
@@ -14,10 +14,10 @@ describe("POM Create", () => {
     let validPass = "testiranje22";
 
     let userData = {
-        
-        title:faker.lorem.words(8),
+
+        title: faker.lorem.words(8),
         description: faker.lorem.sentence(6),
-        img:faker.image.avatar()
+        img: faker.image.city() + '.jpeg'
     }
 
     beforeEach('visit app and login', () => {
@@ -28,9 +28,9 @@ describe("POM Create", () => {
         //cy.url().should('contains','/login');
         //authLogin.login (validEmail, validPass);
         //authLogin.submitBtn.click();
-        
+
     });
-    
+
     xit('Create new Gallery', () => {
         cy.visit('./create');
         cy.intercept({
@@ -54,6 +54,7 @@ describe("POM Create", () => {
         //cy.get('button').contains('Delete').click();
 
     });
+
     xit('visit and comment specific gallery', () => {
         cy.intercept({
             method: "POST",
@@ -63,21 +64,22 @@ describe("POM Create", () => {
         //cy.visit(`/galleries/${galleryId}`);
         //cy.url(`/galleries/${galleryId}`);
         cy.visit(`/galleries/` + galleryId);
-        
-        cy.get ('textarea').type(galleryComment);
-        cy.get ('button').contains("Submit").click();
-        
+
+        cy.get('textarea').type(galleryComment);
+        cy.get('button').contains("Submit").click();
+
         cy.wait('@commentGallery').then((interception) => {
             console.log(interception.response);
             expect(interception.response.statusCode).eq(200);
             expect(interception.response.body[0].body).to.have.string(galleryComment);
         });
+    });
 
-    it('create gallery via backend', () => {
+    it.only('create gallery via backend', () => {
         cy.request({
-           method: "POST",
+            method: "POST",
             url: 'https://gallery-api.vivifyideas.com/api/galleries',
-            headers: {
+           headers: {
                 authorization: `Bearer ${authToken}`
             },
             body: {
@@ -88,10 +90,8 @@ describe("POM Create", () => {
                 ],
                 title: 'neki title'
             }
-        
-        });
 
+        });
+        cy.visit('/');
     });
-    cy.visit('/');
-}); 
 });   

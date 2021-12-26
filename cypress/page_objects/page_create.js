@@ -17,6 +17,9 @@ class PageCreate {
     get cancelBtn () {
         return cy.get ('.btn').eq(1);
     }
+    get editBtn () {
+        return cy.get ('a[type="button"]');
+    }
 
     get addImage () {
         return cy.get ('button[type="button"]').eq(2);
@@ -28,10 +31,11 @@ class PageCreate {
     get comment () {
         return cy.get ('textarea');
     }
+    
     get affterCreateHeading () {
         return cy.get ('h1[class="title-style"]');
     }
-
+ 
     create (title, description, img) {
         this.titleInput.type(title);
         this.descriptionInput.type(description);

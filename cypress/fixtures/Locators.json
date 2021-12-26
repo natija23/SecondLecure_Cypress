@@ -24,6 +24,5 @@
         "descriptionInput": "input[id='description']",
         "imageInput": "input[placeholder='image url']",
         "subBtn": ".btn"
-    }
-
+    } 
 }

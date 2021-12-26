@@ -12,6 +12,12 @@ class allGall {
     get containerGal () {
         return cy.get ('.cell');
     }
+    get boxTitle () {
+        return cy.get (".box-title").eq(0);
+    }
+    get myGalBtn () {
+        return cy.get ('.nav-link').eq(1);
+    }
     getGalleryHeading (index) {
         return this.containerGal.eq(index).find ('h2');
     }

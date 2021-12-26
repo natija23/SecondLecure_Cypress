@@ -1,8 +1,6 @@
-
-
-import {authLogin} from '../page_objects/authLogin';
-import {header} from '../page_objects/header';
-import {allGal}from '../page_objects/authAll';
+import { authLogin } from '../page_objects/authLogin';
+import { header } from '../page_objects/header';
+import { allGal }from '../page_objects/authAll';
 
 //const faker = require ("faker");
 
@@ -10,7 +8,7 @@ describe("All Galleries page test", () => {
     
 
     before('login via backend', () => {
-        //cy.loginViaBackend();
+        cy.loginViaBackend();
 
         //---drugi---nacin------cy.loginViaBackend ('tcvijic1@gmail.com', 'testiranje22');
 
